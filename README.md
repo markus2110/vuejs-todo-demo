@@ -1,7 +1,3 @@
-# vue-uploader
-
-> File uploader via vue
-
 ## Build Setup
 
 ``` bash

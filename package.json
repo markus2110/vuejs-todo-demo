@@ -1,6 +1,6 @@
 {
-  "name": "vue-uploader",
-  "description": "File uploader via vue",
+  "name": "vuejs-todo-demo",
+  "description": "Just a demo vuejs app",
   "version": "1.0.0",
   "author": "Markus Sommerfeld <msommerfeld@silversurfer7.de>",
   "private": true,
