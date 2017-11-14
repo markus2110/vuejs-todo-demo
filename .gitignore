@@ -1,0 +1,15 @@
+.DS_Store
+node_modules/
+dist/*
+!dist/.gitkeep
+npm-debug.log
+yarn-error.log
+nbproject/
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+

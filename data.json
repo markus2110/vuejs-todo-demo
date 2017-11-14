@@ -1,0 +1,21 @@
+[
+    {
+        "id" : 1,
+        "category": "importand",
+        "title": "Todo A",
+        "project": "Project A",
+        "done": false
+    },    {
+        "id" : 2,
+        "category": "importand",
+        "title": "Todo B",
+        "project": "Project B",
+        "done": false
+    },{
+        "id" : 3,
+        "category": "default",
+        "title": "Todo C",
+        "project": "Project C",
+        "done": true
+    }
+]

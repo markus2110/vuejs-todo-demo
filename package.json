@@ -1,0 +1,21 @@
+{
+  "name": "vue-uploader",
+  "description": "File uploader via vue",
+  "version": "1.0.0",
+  "author": "Markus Sommerfeld <msommerfeld@silversurfer7.de>",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "dependencies": {
+    "vue": "^2.4.4"
+  },
+  "devDependencies": {
+    "semantic-ui-less": "^2.2.12",
+    "vue-loader": "^13.0.5",
+    "vue-template-compiler": "^2.4.4",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.4"
+  }
+}
