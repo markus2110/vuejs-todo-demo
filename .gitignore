@@ -1,7 +1,5 @@
 .DS_Store
 node_modules/
-dist/*
-!dist/.gitkeep
 npm-debug.log
 yarn-error.log
 nbproject/
@@ -13,3 +11,6 @@ nbproject/
 *.njsproj
 *.sln
 
+dist/*
+!dist/.gitkeep
+!dist/vendor
