@@ -2,34 +2,39 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './src/main.js',
-  output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: 'build.js'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-          }
-          // other vue-loader options go here
-        }
-      }
-
-//    {
-//        test: /\.less$/,
-//        use: [{
-//            loader: "style-loader" // creates style nodes from JS strings
-//        }, {
-//            loader: "css-loader" // translates CSS into CommonJS
-//        }, {
-//            loader: "less-loader" // compiles Less to CSS
-//        }]
-//    },
+    entry: './src/main.js',
+    output: {
+        path: path.resolve(__dirname, './dist'),
+        publicPath: '/dist/',
+        filename: 'build.js'
+    },
+    module: {
+        rules: [
+            
+            // VUE
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                    }
+                    // other vue-loader options go here
+                }
+            },
+            
+            
+            // LESS
+            {
+                test: /\.less$/,
+                use: [{
+                        loader: "style-loader" // creates style nodes from JS strings
+                    }, {
+                        loader: "css-loader" // translates CSS into CommonJS
+                    }, {
+                        loader: "less-loader" // compiles Less to CSS
+                    }]
+            },
+           
 //
 ////      {
 ////        test: /\.js$/,
@@ -43,22 +48,22 @@ module.exports = {
 //          name: '[name].[ext]?[hash]'
 //        }
 //      }
-    ]
-  },
+        ]
+    },
 //  resolve: {
 //    alias: {
 //      'vue$': 'vue/dist/vue.esm.js'
 //    }
 //  },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: true,
-    overlay: true
-  },
-  performance: {
-    hints: false
-  },
-  devtool: '#eval-source-map'
+    devServer: {
+        historyApiFallback: true,
+        noInfo: true,
+        overlay: true
+    },
+    performance: {
+        hints: false
+    },
+    devtool: '#eval-source-map'
 }
 
 //if (process.env.NODE_ENV === 'production') {
