@@ -13,6 +13,11 @@
                 <span class='right floated edit icon' v-on:click="showForm">
                     <i class='edit icon'></i>
                 </span>
+
+                <span class='right floated trash icon' v-on:click="deleteTodo(todo)">
+                    <i class='trash icon'></i>
+                </span>
+
             </div>
         </div>
         <!-- form is visible when we are in editing mode. -->
@@ -49,32 +54,24 @@
     export default {
         props: ['todo'],
 
-        data() {
+        data : function() {
             return {
               isEditing: false,
             };
         },
 
-        updated : function(a,b,c,d){
-            console.log(a,b,c,d);
-        },
-
-/*
-        watch : {
-            todo : {
-                handler : function(newVal, oldVal){
-                    console.log(newVal, oldVal);
-                },
-                deep: false
-            }
-        },
-*/
         methods: {
+
+            deleteTodo(todo){
+                this.$emit('delete-todo', todo);
+            },
+
             showForm() {
                 this.isEditing = true;
             },
             hideForm() {
                 this.isEditing = false;
+                this.$emit('todo-updated');
             },
         },
     };
