@@ -36,8 +36,9 @@
         components: { TodoCounter, TodoList, CreateTodo },
 
         data() {
+            var todos = JSON.parse(storage.get('todos')) || [];
             return {
-                todos : JSON.parse(storage.get('todos'))
+                todos : todos || []
             }
         },
 
