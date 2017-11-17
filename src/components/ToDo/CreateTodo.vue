@@ -61,9 +61,8 @@
                 var self = this;
                 $('#createModal')
                     .modal({
-                        //transition : 'vertical flip',
-                        inverted: true,
-                        blurring: true
+                        transition : 'vertical flip',
+                        //inverted: true,
                     }).modal("show");
             },
 
