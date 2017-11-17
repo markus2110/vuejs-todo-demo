@@ -4,102 +4,78 @@
             <i class='plus icon'></i>
             Add ToDo
         </button>
-        <div id="todoForm" class='ui' v-show="isNew">
-            <div class='content'>
-                <div class='ui form'>
-                    <div class='field'>
-                        <label>Title</label>
-                        <input v-model="title" type='text' ref='title' defaultValue="">
-                    </div>
-                    <div class='field'>
-                        <label>Project</label>
-                        <input v-model="project" type='text' ref='project' defaultValue="">
-                    </div>
+        
 
+        <create-modal
+            approveName="Save"
 
-<!--                    <div class='ui two button attached buttons'>
-                        <button class='ui basic blue button' v-on:click="sendForm()">
-                            Create
-                        </button>
-                        <button class='ui basic red button' v-on:click="closeForm()">
-                            Cancel
-                        </button>
-                    </div>-->
+            v-bind:data="todo"
+            
+            @approve="sendForm"
+            @cancel="cancelForm"
+            >
+            <span slot="header">Create Todo</span>
+
+            <div class='ui form'>
+                <div class='field'>
+                    <label>Title</label>
+                    <input v-model="todo.title" type='text' ref='title' defaultValue="">
+                </div>
+                <div class='field'>
+                    <label>Project</label>
+                    <input v-model="todo.project" type='text' ref='project' defaultValue="">
                 </div>
             </div>
-        </div>
+
+
+        </create-modal>
+        
     </div>
 </template>
 
 <script>
 
+    import createModal from '../Modal.vue';
     import ToDoModel from './model/ToDo';
-    import sweetalert from 'sweetalert';
 
     export default {
 
+        components: { createModal },            
+
         data: function () {
-            return ToDoModel;
+            return {
+                todo : ToDoModel
+            };
         },
 
         methods: {
 
             clearForm() {
-                this
-                    .setTitle(null)
-                    .setProject(null)
-                ;
+                this.todo.setTitle(null).setProject(null);
             },
 
             openForm() {
                 this.clearForm();
-                this.setIsNew(true);
 
                 var self = this;
-
-                var sw = sweetalert({
-                    content: document.getElementById('todoForm'),
-                    buttons: {
-                        cancel : true,
-                        save : {
-                            text : "OK",
-                            value : "save"
-                        }
-                    },
-
-                }).then(function(value){
-
-                    switch(value){
-                        case 'save':
-                            self.sendForm();
-                        break;
-
-
-                        default:
-                            self.closeForm();
-                        break;
-
-                    }
-
-                    
-                });
-                
+                $('.ui.modal')
+                    .modal('setting', 'transition', 'vertical flip')
+                    .modal("show");
             },
-            closeForm() {
+
+            cancelForm(){
                 this.clearForm();
-                this.setIsNew(false);
             },
-            sendForm() {
 
-                if (this.title && this.project ) {
+            sendForm( todo ) {
+                if (todo.title && todo.project ) {
                     this.$emit('add-todo', {
-                        category :  this.getCategory(),
-                        title :     this.getTitle(),
-                        project :   this.getProject(),
+                        category :  todo.getCategory(),
+                        title :     todo.getTitle(),
+                        project :   todo.getProject(),
                         done :      false
                     });
                 }
-                this.setIsNew(false);
                 this.clearForm();
             }
         }
