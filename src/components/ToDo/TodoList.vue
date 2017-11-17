@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="ui grid container">
         <todo  v-for="todo in todos" v-bind:todo="todo" v-bind:key="todo.id" v-on:todo-updated="todoListChanged" v-on:delete-todo="deleteTodo"></todo>
-    </div>
+    </div>            
 </template>
 
 <script type="text/javascript">

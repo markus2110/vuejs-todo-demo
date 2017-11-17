@@ -1,22 +1,19 @@
 <template>
     <div id="app">
 
-
         <div class="ui top fixed menu">
             <todo-counter v-bind:todos="todos" />
         </div>
-
-        <div style="padding:100px 0 100px 0">
-            <todo-list v-bind:todos="todos" v-on:todo-list-changed="updateStorage" />
-        </div>
-
-
-
+            
+        
+        <todo-list v-bind:todos="todos" v-on:todo-list-changed="updateStorage" style="padding:100px 0 100px 0"/>
+        
         <div class="ui bottom fixed menu">
             <div class="right menu">
                 <create-todo v-on:add-todo="addTodo" />
             </div>
         </div>
+       
     </div>
 </template>
 
@@ -29,7 +26,6 @@
 
     var storage = new LocalStorage(null, "myStorage");
     
-
     export default {
         name: 'app',
         dataUrl : "data.json",
@@ -68,13 +64,4 @@
         }
 
     };
-
-
 </script>
-
-
-<!--
-<style lang="less">
-    @import "./less/app.less";
-</style>
--->
