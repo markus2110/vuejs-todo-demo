@@ -1,6 +1,6 @@
 <template>
-    <div class="ui modal">
-        <i class="close icon"></i>
+    <div v-bind:id="modalId" class="ui modal">
+        
         <div class="header">
             <slot name="header"></slot>
         </div>
@@ -26,6 +26,7 @@
 
             props : {
                 data :          {type:  Object, default: () => { return {} } },
+                modalId :       {type : String, default : 'modal'},
                 approveName :   {type : String, default : 'OK'},
                 cancelName :    {type : String, default : 'Cancel'},
             },

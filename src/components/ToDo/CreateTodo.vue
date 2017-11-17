@@ -1,5 +1,5 @@
 <template>
-    <div class='ui basic content  aligned segment'>
+    <div class='ui basic content aligned segment'>
         <button class='ui primary button icon ' v-on:click="openForm">
             <i class='plus icon'></i>
             Add ToDo
@@ -7,9 +7,10 @@
         
 
         <create-modal
-            approveName="Save"
-
             v-bind:data="todo"
+
+            approveName="Save"
+            modalId="createModal"
             
             @approve="sendForm"
             @cancel="cancelForm"
@@ -58,9 +59,12 @@
                 this.clearForm();
 
                 var self = this;
-                $('.ui.modal')
-                    .modal('setting', 'transition', 'vertical flip')
-                    .modal("show");
+                $('#createModal')
+                    .modal({
+                        //transition : 'vertical flip',
+                        inverted: true,
+                        blurring: true
+                    }).modal("show");
             },
 
             cancelForm(){

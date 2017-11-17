@@ -36,38 +36,6 @@
 
             </div>
         </div>        
-       
-
-        
-        
-            <!-- form is visible when we are in editing mode. -->
-            <div class="content" v-show="isEditing">
-                <div class='ui form'>
-                    <div class='field'>
-                        <label>Title</label>
-                        <input type='text' v-model="todo.title" >
-                    </div>
-                    <div class='field'>
-                        <label>Project</label>
-                        <input type='text' v-model="todo.project" >
-                    </div>
-
-                    <button class="ui positive left floated vertical animated button big" v-on:click="saveForm(todo)">
-                        <div class="hidden content">Save</div>
-                        <div class="visible content">
-                            <i class="save icon"></i>
-                        </div>
-                    </button>   
-
-                    <button class="ui negative right floated vertical animated button big" type="reset" v-on:click="cancelForm()">
-                        <div class="hidden content">Cancel</div>
-                        <div class="visible content">
-                            <i class="cancel icon"></i>
-                        </div>
-                    </button>                   
-
-                </div>
-            </div>        
     </div>
 
 </template>
