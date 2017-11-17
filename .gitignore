@@ -11,6 +11,6 @@ nbproject/
 *.njsproj
 *.sln
 
-dist/*
-!dist/.gitkeep
-!dist/vendor
+#dist/*
+#!dist/.gitkeep
+#!dist/vendor
