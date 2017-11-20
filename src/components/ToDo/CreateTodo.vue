@@ -26,6 +26,9 @@
                     <label>Project</label>
                     <input v-model="todo.project" type='text' ref='project' defaultValue="">
                 </div>
+                
+                <tasks v-bind:tasks="todo.tasks" @addTask="addTask" allowAdd="true" />
+
             </div>
 
 
@@ -38,10 +41,11 @@
 
     import createModal from '../Modal.vue';
     import ToDoModel from './model/ToDo';
+    import Tasks from '../Task.vue';
 
     export default {
 
-        components: { createModal },            
+        components: { createModal, Tasks },            
 
         data: function () {
             return {
@@ -50,8 +54,16 @@
         },
 
         methods: {
+            
+            addTask(task){
+                this.todo.tasks.push({
+                    name : task.name,
+                    done : task.done
+                });
+            },
 
             clearForm() {
+                this.todo.tasks = [];
                 this.todo.setTitle(null).setProject(null);
             },
 
@@ -76,6 +88,7 @@
                         category :  todo.getCategory(),
                         title :     todo.getTitle(),
                         project :   todo.getProject(),
+                        tasks :     todo.tasks,
                         done :      false
                     });
                 }

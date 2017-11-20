@@ -15,8 +15,9 @@
                 <div class="meta">{{ todo.title }}</div>
                 
                 
+                <tasks v-bind:tasks="todo.tasks" />
                 
-                <div class="description"> adsdjas dhs jkdh jkh akhd</div>
+                
             </div>
             <div class="extra content">
                 
@@ -42,8 +43,11 @@
 
 
 <script type="text/javascript">
+    
+    import Tasks from '../Task.vue';
 
     export default {
+        components: { Tasks },           
         props: ['todo'],
 
         originalData: {},

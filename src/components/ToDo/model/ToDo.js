@@ -6,6 +6,10 @@ export default  {
     title :     null,
     project :   null,
     done :      false,
+    tasks :     [{
+            name : "Hallo",
+            done : false
+    }],
 
 
     /**
