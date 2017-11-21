@@ -1,7 +1,7 @@
 <template>
     <div>   
 
-        <div class="ui action input" v-if="allowAdd">
+        <div class="ui action input" v-show="allowAdd == 'true'">
 
             <div class="ui action input">
                 <input placeholder="Task..." type="text" v-model="newTask.name">
@@ -15,7 +15,7 @@
         </div>
 
 
-        <table class="ui compact celled definition table">
+        <table class="ui compact celled definition table" v-show="tasks.length">
           <thead>
             <tr>
               <th>Done</th>
@@ -24,7 +24,7 @@
             </tr>
           </thead>
           <tbody>
-              <tr v-for="task in tasks">
+              <tr v-for="task in tasks" v-bind:class="task.status | style">
                   <td class="collapsing">
                       <div class="ui fitted checkbox">
                           <input type="checkbox" checked> <label></label>
@@ -47,7 +47,7 @@
         props : {
             tasks :          {type:  Array, default: () => { return [] } },
             taskStatus:        {type:  Array, default: () => { return ["importand", "normal", "low"] } },
-            allowAdd :       {type : Boolean, default : false},
+            allowAdd :       {type : String, default : 'false'},
 
         },        
         
@@ -59,6 +59,32 @@
                     done : false
                 }
             };
+        },
+
+        filters : {
+            style : function(value){
+                
+                var cssClass = "";
+
+                switch(value){
+
+                    case "importand":
+                        cssClass = "negative";
+                    break;
+
+                    case "normal":
+                        cssClass = "warning";
+                    break;
+
+                    case "low":
+                        cssClass = "positive";
+                    break;
+                }
+
+                return cssClass;
+            }
+
+
         },
         
         methods : {
