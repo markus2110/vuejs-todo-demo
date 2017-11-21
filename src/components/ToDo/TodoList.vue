@@ -1,13 +1,17 @@
 <template>
     <div class="ui grid container">
-        <todo  v-for="todo in todos" v-bind:todo="todo" v-bind:key="todo.id" v-on:todo-updated="todoListChanged" v-on:delete-todo="deleteTodo"></todo>
+        <todo  
+            v-for="todo in todos" 
+            v-bind:todo="todo" 
+            v-bind:key="todo.id" 
+            v-on:todo-updated="todoListChanged" 
+            v-on:delete-todo="deleteTodo">
+                
+        </todo>
 
 
         <update-modal>
             <span slot="header">Update Todo</span>
-
-            
-
         </update-modal>
     </div>            
 </template>
@@ -27,9 +31,7 @@
             },
             
             deleteTodo(todo) {
-                const todoIndex = this.todos.indexOf(todo);
-                this.todos.splice(todoIndex, 1);
-
+                this.todos.removeTodo(todo);
                 this.todoListChanged();
             }
 

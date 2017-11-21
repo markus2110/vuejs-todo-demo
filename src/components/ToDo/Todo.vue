@@ -78,7 +78,7 @@
             },
 
             deleteTodo(todo) {
-                this.$emit('delete-todo', todo);
+                this.$root.$data.todos.removeTodo(todo);
             },
 
             showForm(todo) {
