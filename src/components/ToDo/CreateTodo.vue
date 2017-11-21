@@ -58,7 +58,8 @@
             addTask(task){
                 this.todo.tasks.push({
                     name : task.name,
-                    done : task.done
+                    done : task.done,
+                    status : task.status
                 });
             },
 
@@ -76,6 +77,13 @@
                         transition : 'vertical flip',
                         //inverted: true,
                     }).modal("show");
+
+                $('.dropdown')
+                  .dropdown({
+                    useLabels: false,
+                    maxSelections: 3
+                  })
+                ;
             },
 
             cancelForm(){
