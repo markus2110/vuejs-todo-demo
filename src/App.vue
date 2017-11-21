@@ -2,11 +2,21 @@
     <div id="app">
 
         <div class="ui top fixed menu">
+            <div class="left menu">
+                
+                <router-link to="/foo">Go to Foo</router-link>
+                <router-link to="/bar">Go to Bar</router-link>
+            </div>
+
             <todo-counter v-bind:todos="todos" />
         </div>
-            
+
+        <br /><br /><br /><br /><br /><br />
+        hallo
+        <router-view></router-view>
+
+        <!--todo-list v-bind:todos="todos" v-on:todo-list-changed="updateStorage" style="padding:100px 0 100px 0"/-->
         
-        <todo-list v-bind:todos="todos" v-on:todo-list-changed="updateStorage" style="padding:100px 0 100px 0"/>
         
         <div class="ui bottom fixed menu">
             <div class="right menu">
