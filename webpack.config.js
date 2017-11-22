@@ -5,8 +5,10 @@ module.exports = {
     entry: './src/main.js',
     output: {
         path: path.resolve(__dirname, './dist'),
-        publicPath: '/dist/',
-        filename: 'build.js'
+        publicPath: 'dist/',
+        filename: 'build.js',
+        chunkFilename: '[chunkhash].js',
+        jsonpFunction : "_mjp_"
     },
     module: {
         rules: [
