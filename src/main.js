@@ -1,5 +1,11 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import MyRouter from './routing';
+
+// App Component 
+import App from './App.vue';
+
+
+const router = new MyRouter(Vue);
 
 
 var ToDoStorage = {
@@ -30,12 +36,13 @@ var ToDoStorage = {
 
 
 
-new Vue({
+var app = new Vue({
+    router : router,
     el: '#application-wrapper',
     
     data : function(){
         return {
-            todos : ToDoStorage 
+            todos : ToDoStorage
         };
     },
     
