@@ -29,9 +29,10 @@
         </div>        
         
 
-
-        <div class="ui grid container" style="margin-top:10px">
-            <router-view></router-view>
+        <div>
+            <div class="ui grid container" style="padding-top:75px;">
+                <router-view></router-view>
+            </div>
         </div>
 
         
