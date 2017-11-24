@@ -2,10 +2,21 @@
     <div id="app">
 
         <div class="ui top fixed menu">
+            
+            
 
-            <router-link to="/" class="item icon">
-                <i class="large home icon"></i>
-            </router-link>
+            <div v-if="this.$route.path === '/'">
+                <router-link to="/" class="item icon" >
+                    <i class="large home icon"></i>
+                </router-link>
+            </div>
+            
+            <div v-else>
+                <router-link to="/" class="item icon" >
+                    <i class="large arrow left icon"></i>
+                </router-link>
+            </div>
+
 
             <div class="item" title="todos closed">
                 <i class='checkmark icon green'></i>
@@ -59,7 +70,7 @@
                 todos : this.$root.$data.todos.get()
             }
         },
-            
+        
         filters: {
             closedCount : function(value){
                 var closed = value.filter(todo => {return todo.done === true});
@@ -74,7 +85,12 @@
         },            
             
         methods: {
-
+            
+            goBack : function(){
+                console.log(this.$router.back());
+                
+            },
+            
             createToDo : function(){
                 var todo = new ToDoModel();
                 todo.setTitle("New todo");
@@ -82,7 +98,6 @@
                 todo.setDone(false);
                 this.$root.$data.todos.addTodo(todo);
             }
-
         }
     };
 </script>
