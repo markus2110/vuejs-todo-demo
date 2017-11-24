@@ -66,8 +66,17 @@
     export default {
 
         data : function(){
+
+            var _this = this;
+
+            this.$root.$data.toDoStore.fetchData().then(
+                function(val){
+                    _this.todos = val;
+                }
+            );
+
             return {
-                todos : this.$root.$data.todos.get()
+                todos : []
             }
         },
         

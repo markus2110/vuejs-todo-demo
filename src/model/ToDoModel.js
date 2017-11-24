@@ -1,9 +1,19 @@
 
-var ToDoModel = function(){
-    
-    this.done = false;
-    this.taskList = [];
+var ToDoModel = function( data ){
 
+    if(typeof data === "undefined"){
+        this.done           = false;
+        this.title          = "",
+        this.description    = "";
+        this.taskList       = [];
+    }else{
+
+        for(var prop in this){
+            if(typeof this[prop] !== "function"){
+                this[prop] = data[prop];
+            }
+        }
+    }
     
     return this;
 };

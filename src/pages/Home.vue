@@ -32,19 +32,19 @@
 
         data(){
             return {
-                todos : this.$root.$data.todos.get()
+                todos : this.$root.$data.todos
             }
         },
 
         methods: {
 
             removeToDo : function(todo){
-                this.$root.$data.todos.removeToDo(todo);
+                this.$root.$data.toDoStore.remove(todo);
             },
 
             markAsDone : function(todo){
                 todo.setDone(true);
-                this.$root.$data.todos.updateToDo(todo);
+                this.$root.$data.toDoStore.update(todo);
             }
 
         }
