@@ -2,7 +2,7 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-    entry: './src/main.js',
+    entry: './src/app.js',
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: 'dist/',
@@ -36,6 +36,12 @@ module.exports = {
                         loader: "less-loader" // compiles Less to CSS
                     }]
             },
+
+            // FileLoader for Fonts
+            {
+                test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+                loader: 'file-loader'
+            }
            
 //
 ////      {

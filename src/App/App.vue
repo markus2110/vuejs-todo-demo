@@ -1,44 +1,39 @@
 <template>
     <div id="app">
 
-        <div class="ui top fixed menu">
-            
-            
 
-            <div v-if="this.$route.path === '/'">
-                <router-link to="/" class="item icon" >
-                    <i class="large home icon"></i>
-                </router-link>
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <router-link to="/" class="item icon" >
+                            <span v-if="this.$route.path === '/'">
+                                <i class="fa fa-home fa-2x"></i>
+                            </span>
+                            <span v-else>
+                                <i class="fa fa-arrow-left fa-2x"></i>
+                            </span>
+                        </router-link>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <router-link to="/config" class="item icon">
+                            <i class="fa fa-cog fa-2x"></i>
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link to="/about" class="item icon">
+                            <i class="fa fa-info-circle fa-2x"></i>
+                        </router-link>
+                    </li>
+                </ul>
+
             </div>
-            
-            <div v-else>
-                <router-link to="/" class="item icon" >
-                    <i class="large arrow left icon"></i>
-                </router-link>
-            </div>
+        </nav>
 
-
-            <div class="item" title="todos closed">
-                <i class='checkmark icon green'></i>
-                <span>{{ todos | closedCount }}</span>
-            </div>
-
-                <div class="item">
-                    <i class='wait icon orange'></i>
-                    <span>{{ todos | openCount }}</span>
-                </div>
-
-
-            <div class="right menu">
-                <router-link to="/config" class="item icon">
-                    <i class="large setting icon"></i>
-                </router-link>
-                <router-link to="/about" class="item icon">
-                    <i class="large info circle icon"></i>
-                </router-link>
-            </div>            
-        </div>        
-        
 
         <div>
             <div class="ui grid container" style="padding-top:75px;">
@@ -46,67 +41,53 @@
             </div>
         </div>
 
-        
-        
-        <div class="ui bottom fixed menu">
-            <div class="right menu">
-                <router-link to="/todo/add" class="item icon">
-                    <i class="huge plus circle icon"></i>
-                </router-link>
+
+
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container-fluid">
+
+
+                <span>{{ todos | openCount }}</span>
+                <span>{{ todos | closedCount }}</span>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <router-link to="/todo/add" class="item icon">
+                            <i class="fa fa-plus-circle fa-4x"></i>
+                        </router-link>
+                    </li>
+                </ul>
             </div>
-        </div>
-        
+        </nav>
+
+
     </div>
 </template>
 
 <script>
-    
+
+    /*
     import ToDoModel from './model/ToDoModel';
-    
+    */
     export default {
 
         data : function(){
-
-            var _this = this;
-
-            this.$root.$data.toDoStore.fetchData().then(
-                function(val){
-                    _this.todos = val;
-                }
-            );
-
             return {
-                todos : []
+                todos: this.$store.state.todos    
             }
         },
-        
+
         filters: {
             closedCount : function(value){
                 var closed = value.filter(todo => {return todo.done === true});
                 return closed.length;
             },
-            
+
             openCount : function(value){
                 var open = value.filter(todo => {return todo.done === false});
-                return open.length;                
-            }          
-
-        },            
-            
-        methods: {
-            
-            goBack : function(){
-                console.log(this.$router.back());
-                
-            },
-            
-            createToDo : function(){
-                var todo = new ToDoModel();
-                todo.setTitle("New todo");
-                todo.setDescription("This is the des");
-                todo.setDone(false);
-                this.$root.$data.todos.addTodo(todo);
+                return open.length;
             }
         }
     };
+
 </script>

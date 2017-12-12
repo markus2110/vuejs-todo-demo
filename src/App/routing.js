@@ -11,12 +11,13 @@ const CreateTodo    = function(){ return import('./pages/ToDo/Create.vue') };
 
 
 const routes = [
-    { path: '/', component: Home },
-    { path: '/todo/add', component: CreateTodo },
+    { path: '/', component: Home, name: 'home' },
+    { path: '/todo/add', component: CreateTodo, name: 'createTodo' },
     
-    { path: '/config', component: Config },
-    { path: '/about', component: About }
+    { path: '/config', component: Config, name: 'config' },
+    { path: '/about', component: About, name: 'about' }
 ];
+
 
 
 

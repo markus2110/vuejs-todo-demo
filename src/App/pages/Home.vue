@@ -4,25 +4,31 @@
 
 
 
-        <div class="four wide computer eight wide tablet sixteen wide mobile column" v-for="todo in todos">
-            <div class="ui fluid card">
-                <div class="content">
-                    <div class="header">
-                        {{ todo.getTitle() }}
-                        <a href="#" class='right floated edit icon'  v-on:click="markAsDone(todo)">
-                            <i class='edit icon'></i>
-                        </a>
-                        <a href="#" class='right floated trash icon' v-on:click="removeToDo(todo)">
-                            <i class='trash icon red'></i>
-                        </a>
-                    </div>
+    <div class="panel panel-default" v-for="todo in todos">
+      <div class="panel-heading">
 
-                    <div class="meta">{{ todo.getDescription() }}</div>
+          <h3 class="panel-title">{{ todo.title }}</h3>
 
-                </div>
+      </div>
+      <div class="panel-body">
+        {{ todo.description }}
+      </div>
+
+
+        <div class="panel-footer clearfix">
+
+            <div class="pull-right">
+
+                <a href="#" v-on:click="markAsDone(todo)">
+                    <i class='fa fa-edit fa-2x'></i>
+                </a>
+                <a href="#" v-on:click="removeToDo(todo)" class="text-danger">
+                    <i class='fa fa-trash fa-2x'></i>
+                </a>
             </div>
         </div>
 
+    </div>
 
     </div>
 </template>
@@ -30,21 +36,21 @@
 <script>
     export default {
 
-        data(){
-            return {
-                todos : this.$root.$data.todos
+
+        computed : {
+            todos : function(){
+                return this.$store.state.todos;
             }
         },
 
         methods: {
 
             removeToDo : function(todo){
-                this.$root.$data.toDoStore.remove(todo);
+                this.$store.commit('removeTodo', todo);
             },
 
             markAsDone : function(todo){
-                todo.setDone(true);
-                this.$root.$data.toDoStore.update(todo);
+                this.$store.commit('isDone', todo);
             }
 
         }
