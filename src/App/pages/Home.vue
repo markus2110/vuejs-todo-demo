@@ -39,7 +39,7 @@
 
         computed : {
             todos : function(){
-                return this.$store.state.todos;
+                return this.$store.dispatch('fetchAllTodos');
             }
         },
 

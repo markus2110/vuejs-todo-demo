@@ -73,7 +73,7 @@
 
         data : function(){
             return {
-                todos: this.$store.state.todos    
+                todos: this.$store.state.todos.all
             }
         },
 
