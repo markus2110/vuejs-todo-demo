@@ -53,7 +53,8 @@
 
                 if(todo.title && todo.description){
                     todo.done = false;
-                    this.$store.commit('addTodo', todo);
+                    this.$store.dispatch('addTodo', todo);
+
                     this.message = false;
                     this.$router.push({name:'home'});
                 }else{

@@ -17,21 +17,31 @@ module.exports = function(env, args){
 
         entry: {
             app : './src/app.js',
-            vendors : ['jquery', 'lodash/core']
+
+            vue : [
+                'vue',
+                'vuex',
+                'vue-router'
+            ],
+
+            vendors : [
+                'jquery',
+                'lodash/core'
+            ]
         },
 
         output: {
             path: path.resolve(__dirname, './dist'),
             publicPath: 'dist/',
             filename: 'js/[name].js',
-    //        chunkFilename: 'js/chunks/[id].js',
+            chunkFilename: 'js/[name].js',
             jsonpFunction : "_mjp_"
         },
 
         plugins: [
             new webpack.optimize.CommonsChunkPlugin({
                     // The order of this array matters
-                    names: ["common", "vendors"],
+                    names: ["vendors", "vue" ],
                     minChunks: 2
             })
         ],
