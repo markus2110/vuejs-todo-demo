@@ -21,7 +21,8 @@ module.exports = function(env, args){
             vue : [
                 'vue',
                 'vuex',
-                'vue-router'
+                'vue-router',
+                'vue-resource',
             ],
 
             vendors : [

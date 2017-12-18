@@ -6,9 +6,6 @@
 
 
         <div class="row container-fluid" style="padding-top:75px;">
-
-
-
             <router-view></router-view>
         </div>
 

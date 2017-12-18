@@ -15,11 +15,10 @@
         </div>
 
 
-        <div class="panel panel-default" v-for="todo in todos">
+        <div class="panel panel-default col-sm-6 col-md-4 col-lg-3" v-for="todo in todos">
+
             <div class="panel-heading">
-
                 <h3 class="panel-title">{{ todo.title }}</h3>
-
             </div>
             <div class="panel-body">
                 {{ todo.description }}
@@ -28,10 +27,10 @@
             <div class="panel-footer clearfix">
                 <div class="pull-right">
                     <a href="#" v-on:click="markAsDone(todo)">
-                        <i class='fa fa-edit fa-2x'></i>
+                        <i class='fa fa-edit fa-1x'></i>
                     </a>
                     <a href="#" v-on:click="removeToDo(todo)" class="text-danger">
-                        <i class='fa fa-trash fa-2x'></i>
+                        <i class='fa fa-trash fa-1x'></i>
                     </a>
                 </div>
             </div>
@@ -66,7 +65,10 @@
             },
 
             markAsDone: function (todo) {
-                this.$store.dispatch('markAsDone', todo);
+
+                alert("DONE");
+
+                //this.$store.dispatch('markAsDone', todo);
             }
 
         }

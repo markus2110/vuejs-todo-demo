@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import jquery from 'jquery';
+import ToDoApi from "../../Api/ToDoApi";
 
 
 //import todos from './modules/ToDos';
@@ -39,31 +39,38 @@ export default new Vuex.Store({
 
     actions : {
         fetchTodos  ({commit}) {
-
-
-
-            jquery.ajax({
-                url : "server/data.php",
-                dataType: "json",
-        
-                data : {
-                    action : "getData"
-                },
-
-                success : function(response, text){
-                    commit("updateToDoList", response);
-                },
-
-                error : function(xhr, message){
-                    commit("setError", message);
-                }
-
-            });
-
+            ToDoApi.get().then(
+                // Success
+                (response) => { commit("updateToDoList", response) },
+                // Error
+                (response) => { commit("setError", response.statusText) },
+            );
         },
-        addTodo     ({commit}, todo) { commit('addTodo', todo) },
-        removeTodo  ({commit}, todo) { commit('removeTodo', todo) },
+
+        addTodo     ({commit}, todo) {
+            ToDoApi.create(todo).then(
+                // Success
+                (response) => { commit("addTodo", response) },
+                // Error
+                (response) => { commit("setError", response.statusText) },
+            );
+        },
+
+        
+        removeTodo  ({commit}, todo) {
+            ToDoApi.delete(todo).then(
+                // Success
+                (response) => { commit("removeTodo", response) },
+                // Error
+                (response) => { commit("setError", response.statusText) },
+            );
+        
+        },
+
+
+        /*
         markAsDone  ({commit}, todo) { commit('isDone', todo) },
+        */
     },
 
 
@@ -74,13 +81,14 @@ export default new Vuex.Store({
             state.todos = todos;
         },
 
-        addTodo : function(state, todo) {
-            state.todos.push(todo);
+        addTodo : function(state, todos) {
+            state.todos = todos;
         },
-        removeTodo : function(state, todo) {
-            var index = state.todos.indexOf(todo);
-            state.todos.splice(index, 1);
+
+        removeTodo : function(state, todos) {
+            state.todos = todos;
         },
+
         isDone : function(state, todo) {
             todo.done = true;
         },

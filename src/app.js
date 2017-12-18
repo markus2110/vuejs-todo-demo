@@ -12,11 +12,7 @@ var app = new Vue({
     router: router,
     store : store,
 
-//    watch: {
-//
-//
-//    },
-
+    
     el: '#application-wrapper',
     render: (h) => h(App)
 });
