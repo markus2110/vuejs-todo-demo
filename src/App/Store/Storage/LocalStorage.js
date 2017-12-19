@@ -1,0 +1,1 @@
+export default "LocalStorage 123";
