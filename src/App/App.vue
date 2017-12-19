@@ -71,7 +71,7 @@
         computed: {
 
             usedStorage : function() { 
-                return this.$store.getters["config/getStorage"]
+                //return this.$store.getters["config/getStorage"]
             },
 
 

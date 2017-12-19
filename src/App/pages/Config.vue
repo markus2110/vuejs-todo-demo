@@ -17,6 +17,13 @@
                 <option value="LocalStorage">in LocalStorage</option>
                 <option value="RemoteStorage">on RemoteStorage</option>
             </select>
+
+            <div v-show='(storage==="RemoteStorage")'>
+                <label>ApiKey:</label>
+                <input type="text" v-model="apiKey" placeholder="API KEY" />
+                <input type="button" value="getApiKey" v-on:click="getApiKey">
+            </div>
+
         </form>
 
 
@@ -25,7 +32,10 @@
 
 <script>
 
-    import { APP_VERSION } from "../../config.js";
+    import { APP_VERSION, UUID_URL } from "~/config";
+    import Vue      from 'vue';
+    import Http     from 'vue-resource';
+    Vue.use(Http);
 
     export default {
 
@@ -33,7 +43,7 @@
             return {
                 version : APP_VERSION,
                 storage : this.$store.getters["config/getStorage"],
-
+                apiKey : this.$store.getters["config/getApiKey"],
             }
         },
 
@@ -41,6 +51,10 @@
         methods : {
             setStorage : function(storage){
                 this.$store.dispatch("config/setStorage", storage);
+            },
+
+            getApiKey : function(){
+                this.$store.commit("config/UPDATE_API_KEY", "JAÖ");
             }
         }
 

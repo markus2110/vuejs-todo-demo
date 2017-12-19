@@ -98,6 +98,7 @@ module.exports = function(env, args){
 
         resolve: {
             alias: {
+                "~" : path.resolve(__dirname, 'src/')
                 //Common : path.resolve(__dirname, 'src/Common/')
             }
       },
