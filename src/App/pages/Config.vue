@@ -13,7 +13,7 @@
 
         <form name="appConfig">
             <label for="StorageType">Store ToDo's :</label>
-            <select v-model="storage" v-on:change="setStorage(storage)">
+            <select v-model="storage">
                 <option value="LocalStorage">in LocalStorage</option>
                 <option value="RemoteStorage">on RemoteStorage</option>
             </select>
@@ -38,22 +38,36 @@
     Vue.use(Http);
 
     export default {
+            
+        computed : {
+            storage: {
+                get: function(){ 
+                    return this.$store.getters["config/getStorage"] 
+                },
+                set: function(value){
+                    this.$store.dispatch("config/setStorage", value);
+                }
+            },
+            
+            apiKey:     function() { return this.$store.getters["config/getApiKey"] },
+        },
 
         data : function(){
             return {
-                version : APP_VERSION,
-                storage : this.$store.getters["config/getStorage"],
-                apiKey : this.$store.getters["config/getApiKey"],
+                version : APP_VERSION
             }
         },
 
 
         methods : {
             setStorage : function(storage){
-                this.$store.dispatch("config/setStorage", storage);
+                
             },
 
             getApiKey : function(){
+                
+                Vue.http.get("server/uuid.php");
+                
                 this.$store.commit("config/UPDATE_API_KEY", "JAÖ");
             }
         }

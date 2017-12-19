@@ -1,5 +1,10 @@
 export const APP_VERSION = "0.0.1";
-export const UUID_URL = "http://localhost/test/vue-todo-demo/server/uuid.php";
+
+export const UUID_URL = "server/uuid.php";
+
 export const defaultConfig = {
-    storage : "LocalStorage"
+    storage:    "LocalStorage",
+    appName:    "My App Name",
+    tags:       ["Low", "Importand", "VeryImportand"],
+    colors:     ["green", "yellow", "red"]
 }

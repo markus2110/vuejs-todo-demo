@@ -107,7 +107,19 @@ module.exports = function(env, args){
         devServer: {
             historyApiFallback: true,
             noInfo: true,
-            overlay: true
+            overlay: {
+                warnings: true,
+                errors: true
+            },
+            
+            openPage: '#/config',
+            
+            proxy: {
+                "/server": {
+                    target: "http://localhost/projects/vuejs-todo-demo/",
+                    secure: false
+                }
+            }
         },
 
 

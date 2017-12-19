@@ -5,7 +5,7 @@
   "author": "Markus Sommerfeld <msommerfeld@silversurfer7.de>",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open 'google-chrome' --hot"
   },
   "dependencies": {
     "jquery": "^3.2.1",
