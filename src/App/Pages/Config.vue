@@ -1,6 +1,10 @@
 <template>
     <div id="config">
-        <h1>Config</h1>
+
+        
+        <h1>{{ 'config.page.head' | trans }}</h1>
+        <h2>{{ 'config.page.subhead' | trans }}</h2>
+        
 
         <table>
             <tr>

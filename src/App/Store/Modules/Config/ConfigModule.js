@@ -1,6 +1,6 @@
 
-import LocalStorage from "~/common/Storage/LocalStorage";
-import {defaultConfig} from "~/config";
+import LocalStorage from "@/util/Storage/LocalStorage";
+import {defaultConfig} from "@/config";
 const LocalStoage = new LocalStorage("todo-app");
 
 

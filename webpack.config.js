@@ -16,7 +16,7 @@ module.exports = function(env, args){
     var config = {
 
         entry: {
-            app : './src/app.js',
+            app : './src/main.js',
 
             vue : [
                 'vue',
@@ -97,8 +97,10 @@ module.exports = function(env, args){
         },
 
         resolve: {
+            extensions: ['.js', '.vue', '.json'],
             alias: {
-                "~" : path.resolve(__dirname, 'src/')
+                "~" : path.resolve(__dirname, 'src/'),
+                "@" : path.resolve(__dirname, 'src/')
                 //Common : path.resolve(__dirname, 'src/Common/')
             }
       },

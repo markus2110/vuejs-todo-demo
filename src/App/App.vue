@@ -1,6 +1,7 @@
 <template>
     <div id="app">
 
+        <language-switch />
 
         <!--header-component /-->
 
@@ -33,8 +34,12 @@
         </nav>
 
 
+
+
         <div>
             APP PAge
+
+            <div>Locale = {{ usedLocale }}</div>
 
             <div>{{ usedStorage }}</div>
 
@@ -69,6 +74,10 @@
             ToDoItem : ToDoItem
         },
         computed: {
+
+            usedLocale : function(){
+                return this.$root.$data.locale;
+            },
 
             usedStorage : function() { 
                 //return this.$store.getters["config/getStorage"]
